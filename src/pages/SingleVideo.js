@@ -2,13 +2,14 @@ import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineDown } from "react-icons/ai";
 import logo from "./frameblue.png";
+import Footer from "../components/Footer";
 function SingleVideo() {
   return (
     <>
       <section>
         <div className="container">
           <div className="authnav">
-            <img className="logo" src={logo} alt="" />
+            <img className="logo" src="images/frameblue.png" alt="" />
             <div className="user">
               <FaUserCircle />
               <h5>Fullstack Mechanic</h5>
@@ -72,6 +73,26 @@ function SingleVideo() {
           </div>
         </div>
       </section>
+
+      <section>
+        <div className="container">
+          <div className="sf">
+            <h3>
+              To ensure the availability and privacy of your video, we recommend
+              saving it to your account.
+            </h3>
+
+            <button className="button">Save Video</button>
+
+            <h3 className="color3">
+              Don’t have an account?
+              <span className="color1"> Create account</span>
+            </h3>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </>
   );
 }

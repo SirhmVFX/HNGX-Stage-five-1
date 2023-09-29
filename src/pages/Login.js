@@ -16,7 +16,7 @@ function Login() {
         <div className="container">
           <div className="auth">
             <div className="authhead">
-              <h2 className="subheads">Log in or Sign up</h2>
+              <h2 className="subheads">Log in</h2>
               <p className="color3">
                 Join millions of others in sharing successful moves on
                 HelpMeOut.
@@ -35,20 +35,22 @@ function Login() {
             <div>
               <form action="">
                 <div className="form-tag">
+                  <label htmlFor="name">Name</label>
+                  <input type="text" placeholder="Enter your email address" />
+                </div>
+
+                <div className="form-tag">
                   <label htmlFor="Email">Email</label>
                   <input type="text" placeholder="Enter your email address" />
                 </div>
 
                 <div className="form-tag">
                   <label htmlFor="Password">Password</label>
-                  <input
-                    type="password"
-                    placeholder="Enter your email address"
-                  />
+                  <input type="password" placeholder="Enter Password" />
                 </div>
 
                 <div className="form-tag">
-                  <button className="button">Sign Up</button>
+                  <button className="button">Log In</button>
                 </div>
               </form>
             </div>

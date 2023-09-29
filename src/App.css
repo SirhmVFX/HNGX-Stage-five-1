@@ -329,6 +329,15 @@ footer {
 
 }
 
+.sf {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 6rem;
+  align-items: center;
+
+}
+
 
 
 @media (min-width:60rem) {
