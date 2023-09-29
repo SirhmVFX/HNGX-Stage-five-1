@@ -35,11 +35,6 @@ function Login() {
             <div>
               <form action="">
                 <div className="form-tag">
-                  <label htmlFor="name">Name</label>
-                  <input type="text" placeholder="Enter your email address" />
-                </div>
-
-                <div className="form-tag">
                   <label htmlFor="Email">Email</label>
                   <input type="text" placeholder="Enter your email address" />
                 </div>
