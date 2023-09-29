@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import SingleVideo from "./pages/SingleVideo";
+import Ready from "./pages/Ready";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/video/:id" element={<SingleVideo />} />
+          <Route path="/newvideo/:id" element={<Ready />} />
         </Routes>
       </BrowserRouter>
     </>

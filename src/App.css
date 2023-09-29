@@ -307,14 +307,29 @@ footer {
 
 .sendin {
   display: flex;
-  justify-content: space-between;
-  width: 50%;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
 
 }
 
-.sendin > input {
-  width: 80%;
+
+
+.ready {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 4rem;
 }
+
+.red {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+
+
 
 @media (min-width:60rem) {
  .herosection {
@@ -331,5 +346,21 @@ footer {
 
  .ft {
   flex-direction: row;
+ }
+
+ .sendin {
+  flex-direction: row;
+ }
+
+ .sendin > input {
+  width: 80%;
+ }
+
+ .ready {
+  flex-direction: row;
+ }
+
+ .ready > div {
+   width: 50%;
  }
 }
