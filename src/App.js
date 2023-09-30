@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import SingleVideo from "./pages/SingleVideo";
 import Ready from "./pages/Ready";
+import HowTo from "./pages/HowTo";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/video/:id" element={<SingleVideo />} />
           <Route path="/newvideo/:id" element={<Ready />} />
+          <Route path="/howto" element={<HowTo />} />
         </Routes>
       </BrowserRouter>
     </>

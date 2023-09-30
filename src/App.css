@@ -338,6 +338,22 @@ footer {
 
 }
 
+.hott {
+  width: min(800px, 70%);
+  margin-inline: auto;
+  text-align: center;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hj {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
 
 
 @media (min-width:60rem) {

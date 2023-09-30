@@ -1,7 +1,6 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineDown } from "react-icons/ai";
-import logo from "./frameblue.png";
 import Footer from "../components/Footer";
 function SingleVideo() {
   return (
