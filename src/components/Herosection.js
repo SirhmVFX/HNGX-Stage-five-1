@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function Herosection() {
   return (
@@ -16,9 +17,9 @@ function Herosection() {
                 Help your friends and loved ones by creating and sending videos
                 on how to get things done on a website.
               </p>
-              <button className="button">
+              <Link to="/how-to" className="button">
                 Install HelpMeOut <AiOutlineArrowRight />
-              </button>
+              </Link>
             </div>
             <div>
               <img className="leftimg" src="images/Group 34435.png" alt="" />

@@ -1,8 +1,8 @@
 chrome.tabs.onUpdated.addListener((tabId, chnageInfo, tab) => {
-  if (chnageInfo.status === "complete" && /^http/.test(tab.url)) {
+  if (chnageInfo.status === "complete") {
     chrome.scripting
       .executeScript({
-        target: { tabId },
+        target: { tabId: tabId },
         files: ["./content.js"],
       })
       .then(() => {

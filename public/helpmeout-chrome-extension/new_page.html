@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recorded Video</title>
+  </head>
+  <body>
+    <h1>Recorded Video</h1>
+    <video controls>
+      <source id="videoSource" src="" type="video/webm" />
+    </video>
+
+    <script>
+      window.onload = function () {
+        // Fetch the video URL from the query parameter or any other source
+        // For this example, we'll assume it's passed as a query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoUrl = urlParams.get("videoUrl");
+
+        if (videoUrl) {
+          // Set the video source
+          const videoSource = document.getElementById("videoSource");
+          videoSource.setAttribute("src", videoUrl);
+        }
+      };
+    </script>
+  </body>
+</html>
