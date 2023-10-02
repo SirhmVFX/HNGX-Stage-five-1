@@ -12,10 +12,7 @@ function Header() {
             <div>
               <ul className="nav_menu">
                 <li>
-                  <Link>Features</Link>
-                </li>
-                <li>
-                  <Link>How it works</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
                   <Link to="/login">Login</Link>
@@ -29,6 +26,13 @@ function Header() {
                 </li>
                 <li>
                   <Link to="/newvideo/:id">Video Dashboard</Link>
+                </li>
+
+                <li>
+                  <Link>Features</Link>
+                </li>
+                <li>
+                  <Link>How it works</Link>
                 </li>
               </ul>
             </div>
