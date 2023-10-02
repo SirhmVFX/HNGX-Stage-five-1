@@ -17,7 +17,7 @@ function Herosection() {
                 Help your friends and loved ones by creating and sending videos
                 on how to get things done on a website.
               </p>
-              <Link to="/how-to" className="button">
+              <Link to="/howto" className="button">
                 Install HelpMeOut <AiOutlineArrowRight />
               </Link>
             </div>
