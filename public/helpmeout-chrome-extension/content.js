@@ -1,7 +1,3 @@
-var recorder = null;
-var recordedChunks = [];
-
-// Create the modal HTML
 const modalHtml = `
   <div id="recording-modal" style="display: none; align-items: center; gap:10px; border-radius: 150px; position: fixed; bottom: 0px; left: 50%; transform: translate(-50%, -50%); background-color: black; padding-block: 1rem; padding-inline:3rem; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
     <h2>00:03:45</h2>
@@ -73,14 +69,13 @@ function stopRecording() {
   hideRecordingModal();
 }
 
+console.log("Hi, I have been injected whoopie!!!");
+
+var recorder = null;
 function onAccessApproved(stream) {
   recorder = new MediaRecorder(stream);
 
   recorder.start();
-
-  recorder.ondataavailable = function (event) {
-    recordedChunks.push(event.data);
-  };
 
   recorder.onstop = function () {
     stream.getTracks().forEach(function (track) {
@@ -88,47 +83,30 @@ function onAccessApproved(stream) {
         track.stop();
       }
     });
+  };
 
-    // Combine recorded chunks into a Blob
-    var recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+  recorder.ondataavailable = function (event) {
+    let recordedBlob = event.data;
+    let url = URL.createObjectURL(recordedBlob);
 
-    // Upload the recorded video to the API endpoint
-    uploadVideoToAPI(recordedBlob);
+    let a = document.createElement("a");
+
+    a.style.display = "none";
+    a.href = url;
+    a.download = "screen-recording.webm";
+
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url);
   };
 }
 
-function uploadVideoToAPI(videoBlob) {
-  // Create a FormData object to send the video Blob
-  var formData = new FormData();
-  formData.append("video", videoBlob);
-
-  // Replace 'your-api-endpoint' with the actual API endpoint
-  var apiUrl = "https://stage5.onrender.com/api/upload_video_chunk";
-
-  fetch(apiUrl, {
-    method: "POST",
-    body: JSON.stringify(formData),
-  })
-    .then(function (response) {
-      if (response.ok) {
-        return response.text(); // Assuming the API returns a URL to the uploaded video
-      } else {
-        console.error("Failed to upload video to the API.");
-        throw new Error("Failed to upload video to the API");
-      }
-    })
-    .then(function (videoUrl) {
-      // Upload successful, open the video URL in a new tab
-      window.open(videoUrl, "_blank");
-    })
-    .catch(function (error) {
-      console.error("Network error:", error);
-    });
-}
-
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "request_recording") {
-    console.log("Requesting recording");
+    console.log("requesting recording");
 
     sendResponse(`processed: ${message.action}`);
 
@@ -140,17 +118,19 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
           height: 9999999999,
         },
       })
-      .then(function (stream) {
+      .then((stream) => {
         onAccessApproved(stream);
         startRecording();
       });
   }
 
-  if (message.action === "stopRecording") {
+  if (message.action === "stopvideo") {
+    console.log("stopping video");
     sendResponse(`processed: ${message.action}`);
-    if (!recorder) return console.log("No recorder");
+    if (!recorder) return console.log("no recorder");
 
     recorder.stop();
-    stopRecording();
+    startRecording();
+    hideRecordingModal();
   }
 });

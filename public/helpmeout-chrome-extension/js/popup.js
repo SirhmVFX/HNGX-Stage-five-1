@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // selectors
-  const startRecording = document.getElementById("record");
-  const stopRecording = document.getElementById("stoprecord");
+  // GET THE SELECTORS OF THE BUTTONS
+  const startVideoButton = document.querySelector("button#start_video");
+  const stopVideoButton = document.querySelector("button#stop_video");
 
-  startRecording.addEventListener("click", () => {
+  // adding event listeners
+
+  startVideoButton.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.sendMessage(
         tabs[0].id,
@@ -12,23 +14,23 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!chrome.runtime.lastError) {
             console.log(response);
           } else {
-            console.log(chrome.runtime.lastError, "error");
+            console.log(chrome.runtime.lastError, "error line 14");
           }
         }
       );
     });
   });
 
-  stopRecording.addEventListener("click", () => {
+  stopVideoButton.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.sendMessage(
         tabs[0].id,
-        { action: "stopRecording" },
+        { action: "stopvideo" },
         function (response) {
           if (!chrome.runtime.lastError) {
             console.log(response);
           } else {
-            console.log(chrome.runtime.lastError, "error 2");
+            console.log(chrome.runtime.lastError, "error line 27");
           }
         }
       );

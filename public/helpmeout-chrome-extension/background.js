@@ -1,13 +1,15 @@
-chrome.tabs.onUpdated.addListener((tabId, chnageInfo, tab) => {
-  if (chnageInfo.status === "complete") {
+//chrome
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete" && /^http/.test(tab.url)) {
     chrome.scripting
       .executeScript({
-        target: { tabId: tabId },
+        target: { tabId },
         files: ["./content.js"],
       })
       .then(() => {
-        console.log("content script injected");
+        console.log("we have injected the content script");
       })
-      .catch((err) => console.log(err, "error in backgound"));
+      .catch((err) => console.log(err, "error in background script line 10"));
   }
 });
